@@ -4,9 +4,33 @@
   "description": "![Netlify Status](https://api.netlify.com/api/v1/badges/7c7bbcdc-dc94-49c5-9ff7-6ee5b942cdf8/deploy-status?branch=main)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite",
+    "build": "vite build --emptyOutDir",
+    "lint": "eslint *.js src/**/*.js",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
+    "test": "jest"
   },
+  "author": "Sin Yi Lin",
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-import": "^2.31.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "vite": "^5.4.10"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ]
 }

@@ -1,66 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Wanted</title>
-    <meta name="description" content="Job Wanted">
-    <meta name="author" content="Phoebe Lin">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/base-large.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="description" content="Job Wanted" />
+    <meta name="author" content="Phoebe Lin" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/base-large.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap&family=Lato:wght@300&family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap"
-        rel="stylesheet">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap&family=Lato:wght@300&family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <header class="headerfix divider">
-        <section class="navigation">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo.jpg" alt="Logo image" loading="lazy" width="200"
-                        height="200"></a>
-            </div>
-            <a class="job-link" href="index.html">Home</a>
-        </section>
-        <div class="navigation">
-            <form id="searchForm1" class="search-box">
-                <input type="text" id="searchSkill" placeholder="🔍Skill, title or company..." />
-            </form>
-            <form id="searchForm2" class="search-box">
-                <input type="text" id="searchLocation" placeholder="🚩Country, City, or state..." />
-            </form>
-            <form id="searchForm3" class="search-box">
-                <label for="workFromHome">Remote
-                    <input type="checkbox" id="searchType" name="workFromHome" value="True">
-                </label>
-            </form>
-            <button class="search" type="submit">Search</button>
-            </nav>
+      <section class="navigation">
+        <div class="logo">
+          <a href="index.html"
+            ><img
+              src="images/logo.jpg"
+              alt="Logo image"
+              loading="lazy"
+              width="200"
+              height="200"
+          /></a>
         </div>
+        <a class="job-link" href="index.html">Home</a>
+      </section>
+      <div class="navigation">
+        <form id="searchForm1" class="search-box">
+          <input
+            type="text"
+            id="searchSkill"
+            placeholder="🔍Skill, title or company..."
+          />
+        </form>
+        <form id="searchForm2" class="search-box">
+          <input
+            type="text"
+            id="searchLocation"
+            placeholder="🚩Country, City, or state..."
+          />
+        </form>
+        <form id="searchForm3" class="search-box">
+          <label for="workFromHome"
+            >Remote
+            <input
+              type="checkbox"
+              id="searchType"
+              name="workFromHome"
+              value="True"
+            />
+          </label>
+        </form>
+        <button class="search" type="submit">Search</button>
+      </div>
     </header>
     <main>
-        <section class="jobs">
-        </section>
-        <!-- Modal Structure -->
-        <div id="mapModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Map Location</h2>
-                <div id="mapContainer">
-                    <!-- Google Maps iframe will be injected here -->
-                </div>
-            </div>
+      <section class="jobs"></section>
+      <!-- Modal Structure -->
+      <div id="mapModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Map Location</h2>
+          <div id="mapContainer">
+            <!-- Google Maps iframe will be injected here -->
+          </div>
         </div>
+      </div>
     </main>
     <footer class="divider">
-        <div class="logo">
-            <a href="index.html">Job Wanted</a>
-        </div>
+      <div class="logo">
+        <a href="index.html">Job Wanted</a>
+      </div>
     </footer>
     <script src="scripts/job.mjs" type="module"></script>
-</body>
-
+  </body>
 </html>
