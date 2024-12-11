@@ -1,4 +1,4 @@
-// const { GOOGLE_MAPS_API_KEY: key } = import.meta.env;
+const { GOOGLE_MAPS_API_KEY: key } = import.meta.env;
 /* Declare and initialize global variables */
 const search = document.querySelector(".search");
 search.addEventListener("click", () => {
@@ -65,8 +65,8 @@ function displayJobs(data) {
             const jobElement = document.createElement("div");
             jobElement.classList.add("job-item");
 
-            let latitude = job.job_latitude;
-            let longitude = job.job_longitude;
+            // let latitude = job.job_latitude;
+            // let longitude = job.job_longitude;
             let companyName = job.employer_name;
 
             const mapButton = document.createElement("button");
@@ -75,7 +75,7 @@ function displayJobs(data) {
 
             // Add event listener for the button
             mapButton.addEventListener("click", () => {
-                openModal(latitude, longitude, companyName);
+                openModal(companyName);
             });
             // const jobId = job.job_id;
             jobElement.innerHTML = `
@@ -97,7 +97,7 @@ function displayJobs(data) {
 }
 // Google Maps API Key (Replace with your key if using Google Maps)
 //Hide the API Key. When needed,remarked line 8, and then tha code would work.
-const GOOGLE_MAPS_API_KEY = 'AIzaSyC_C9ING3B6KFDr2hTZn9yCoIbRR0npCUw';
+// const GOOGLE_MAPS_API_KEY = 'AIzaSyC_C9ING3B6KFDr2hTZn9yCoIbRR0npCUw';
 
 // Get references to elements
 const mapModal = document.getElementById("mapModal");
@@ -105,8 +105,8 @@ const closeButton = document.querySelector(".close-button");
 const mapContainer = document.getElementById("mapContainer");
 
 // Function to open the modal
-function openModal(latitude, longitude, companyName) {
-    const mapUrl = generateMapUrl(latitude, longitude, companyName);
+function openModal(companyName) {
+    const mapUrl = generateMapUrl(companyName);
     mapContainer.innerHTML = `<iframe width="100%" height="100%" frameborder="0" style="border:0" src="${mapUrl}" allowfullscreen></iframe>`;
     mapModal.style.display = "flex";
 }
@@ -126,10 +126,13 @@ window.addEventListener("click", (event) => {
         closeModal();
     }
 });
+
+
+
 // Function to initialize the map
-function generateMapUrl(latitude, longitude, companyName) {
+function generateMapUrl(companyName) {
     // Embed Google Maps with the user's location
-    const mapUrl = `https://www.google.com/maps/embed/v1/www.google.com/maps/embed/v1/search?q=${companyName}&key=${GOOGLE_MAPS_API_KEY}&center=${latitude || "ANY"},${longitude || "ANY"}&zoom=15`;
+    const mapUrl = `https://www.google.com/maps/embed/v1/www.google.com/maps/embed/v1/search?q=${companyName}&key=${key}&zoom=15`;
     return mapUrl;
 }
 
