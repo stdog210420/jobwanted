@@ -1,5 +1,17 @@
-const { GOOGLE_MAPS_API_KEY: key } = import.meta.env;
+const { VITE_GOOGLE_MAPS_API_KEY: key } = import.meta.env;
+
 /* Declare and initialize global variables */
+
+// function myFunction(envVariables) {
+//     if (!envVariables || typeof envVariables !== 'object') {
+//         console.error('無效的參數');
+//         return;
+//     }
+//     console.log('有效參數:', envVariables);
+// }
+
+console.log(key);
+
 const search = document.querySelector(".search");
 search.addEventListener("click", () => {
     getJobs();
@@ -94,6 +106,7 @@ function displayJobs(data) {
     } else {
         jobsContainer.innerHTML = "<p>No jobs found for the given criteria.</p>";
     }
+
 }
 // Google Maps API Key (Replace with your key if using Google Maps)
 //Hide the API Key. When needed,remarked line 8, and then tha code would work.
@@ -107,6 +120,7 @@ const mapContainer = document.getElementById("mapContainer");
 // Function to open the modal
 function openModal(companyName) {
     const mapUrl = generateMapUrl(companyName);
+    console.log(mapUrl);
     mapContainer.innerHTML = `<iframe width="100%" height="100%" frameborder="0" style="border:0" src="${mapUrl}" allowfullscreen></iframe>`;
     mapModal.style.display = "flex";
 }
@@ -131,8 +145,13 @@ window.addEventListener("click", (event) => {
 
 // Function to initialize the map
 function generateMapUrl(companyName) {
+    console.log(key);
     // Embed Google Maps with the user's location
-    const mapUrl = `https://www.google.com/maps/embed/v1/www.google.com/maps/embed/v1/search?q=${companyName}&key=${key}&zoom=15`;
+    const mapUrl = `https://www.google.com/maps/embed/v1/search?q=${companyName}&key=${key}&zoom=15`;
     return mapUrl;
 }
 
+// const GOOGLE_MAPS_API_KEY = 'AIzaSyC_C9ING3B6KFDr2hTZn9yCoIbRR0npCUw';
+// `https://www.google.com/maps/embed/v1/search?q=convestro&key=AIzaSyC_C9ING3B6KFDr2hTZn9yCoIbRR0npCUw&zoom=15`;
+
+// mapContainer.innerHTML = `<iframe width="100%" height="100%" frameborder="0" style="border:0" src="${mapUrl}" allowfullscreen></iframe>`;
