@@ -18,14 +18,15 @@
 
 <body>
   <header class="headerfix divider">
-    <section class="navigation">
-      <div class="logo">
-        <a href="index.html"><img src="images/logo.jpg" alt="Logo image" loading="lazy" width="200" height="200" /></a>
-      </div>
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.webp" alt="Logo image" loading="lazy" width="200" height="200" /></a>
+    </div>
+    <div class="navigation">
       <a class="job-link" href="index.html">Home</a>
       <a class="job-link" href="jobsave.html">View Favorites</a>
-    </section>
-    <div class="navigation">
+    </div>
+    <button id="menu"></button>
+    <div class="searchForm">
       <form id="searchForm1" class="search-box">
         <input type="text" id="searchSkill" placeholder="🔍Skill, title or company..." />
       </form>
@@ -56,7 +57,7 @@
   </main>
   <footer class="divider">
     <div class="footer-logo">
-      <a href="index.html"><img src="images/logo.jpg" alt="Logo image" loading="lazy" width="200" height="200" /></a>
+      <a href="index.html"><img src="images/logo.webp" alt="Logo image" loading="lazy" width="200" height="200" /></a>
     </div>
     <div class="footer-area">
       <p id="footer-name">Job Wanted<span>&copy;</span><span id="year"> </span> </p>
@@ -64,7 +65,7 @@
     </div>
   </footer>
   <script src="scripts/job.mjs" type="module"></script>
-  <!-- <script src="scripts/test.js" type="module"></script> -->
+  <script src="scripts/hambutton.js" type="module"></script>
   <script src="scripts/getdates.js" type="module"></script>
 </body>
 

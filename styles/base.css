@@ -15,16 +15,18 @@
 }
 
 * {
+
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-size: var(--font-base);
   background-color: var(--white-color);
   overflow-wrap: break-word;
   align-items: center;
   text-align: center;
-  margin: 0;
   font-family: var(--font-body);
   color: var(--primary-color);
   background-color: #f8f9fc;
@@ -38,6 +40,10 @@ img {
 
 .headerfix {
   padding: 0 10px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .divider {
@@ -46,28 +52,25 @@ img {
   padding: 10px;
 }
 
+.searchForm {
+  background-color: var(--white-color);
+}
+
 .divider a {
   text-decoration: none;
   text-align: center;
 }
 
 .logo {
-  /* display: flex;
-  justify-content: space-between; */
-  align-items: center;
-  padding: 0 10px;
+  padding: 0;
+  margin: 0;
 }
 
 .logo img {
-  margin: 10px;
-  width: 60%;
+  width: 100%;
   height: auto;
 }
 
-.footer-logo img {
-  width: 40%;
-  height: auto;
-}
 
 .logo:hover {
   /*move 10 pixels to the right, and move 10 pixels down.*/
@@ -182,18 +185,13 @@ button,
 .jobs,
 .favoriteContainer {
   padding: 0.5em;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
   justify-content: baseline;
   align-items: center;
   justify-content: center;
 }
 
 .jobMap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
   margin: 10px;
   background-color: var(--white-color);
 }
@@ -255,9 +253,14 @@ h1:hover {
   color: var(--accent2-color);
 }
 
+.job-link {
+  color: var(--accent1-color);
+  padding: 10px;
+}
 
 .job-item {
   max-width: 400px;
+  width: 100%;
   height: 600px;
   margin: 2px;
   display: flex;
@@ -277,27 +280,24 @@ h1:hover {
   color: var(--secondary-color);
 }
 
-.navigation {
+.searchForm {
   margin: 0;
   padding-right: 1rem;
   width: 100%;
   font-size: 1.25rem;
   font-weight: bolder;
   align-items: center;
-  justify-content: space-around;
-  display: flex;
-  flex-direction: row;
   text-align: center;
 }
 
-.navigation a {
+.searchForm a {
   width: 100%;
   text-align: center;
   padding: 5px;
   text-decoration: none;
 }
 
-.navigation a:hover {
+.searchForm a:hover {
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -348,15 +348,29 @@ h1:hover {
   border: none;
 }
 
-footer .logo {
+#menu {
+  text-decoration: none;
+  padding: .5rem .75rem;
+  width: 2rem;
+  border: 0;
   display: block;
-  align-items: center;
-  justify-content: center;
-  max-width: 30%;
+  position: absolute;
+  right: 1rem;
+  background-color: var(--nav-hover-background-color);
+}
+
+.logo img {
+  margin: 0;
+  max-width: 60%;
   height: auto;
 }
 
-/* End job list card */
+.footer-logo img {
+  width: 30%;
+  height: auto;
+
+}
+
 
 /* mobile view */
 @media screen and (max-width: 1023px) {
@@ -370,12 +384,6 @@ footer .logo {
   .saveBtn {
     max-width: 80%;
     height: auto;
-  }
-
-  .footer-logo img {
-    width: 10%;
-    height: auto;
-
   }
 
   .headerfix,
@@ -395,10 +403,18 @@ footer .logo {
 
   }
 
-
-  /*    main,.hero */
-  .navigation a {
+  .searchForm a {
     display: block;
+  }
+
+  .searchForm {
+    background-color: var(--white-color);
+    gap: 0;
+    display: block;
+  }
+
+  .navigation a {
+    display: none;
   }
 
   .navigation {
@@ -407,4 +423,26 @@ footer .logo {
     display: block;
   }
 
+  #menu::before {
+    content: "☰";
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+
+  #menu.open::before {
+    content: "❌";
+  }
+
+  #menu.open {
+    display: block;
+    color: var(--secondary-color);
+
+  }
+
+  .navigation.open a {
+    display: block;
+
+    font-size: 1.5rem;
+  }
 }

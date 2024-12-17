@@ -20,58 +20,42 @@
     font-size: var(--font-base);
   }
 
+  .divider {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+  }
+
   .headerfix {
     display: flex;
     justify-content: space-between;
   }
 
-  .logo {
+  .jobs,
+  .favoriteContainer {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .jobMap {
     display: flex;
-    justify-content: space-between;
-  }
-
-  main {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-  }
-
-  .join-member {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .product-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .product-area {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr auto;
-    column-gap: 1rem;
-    row-gap: 1rem;
-  }
-
-  .bag-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 1rem;
-    column-gap: 1rem;
   }
 
-  .products img {
-    width: 100%;
-    height: auto;
-    /* max-width: 340px; */
+  .navigation {
+    display: flex;
+    gap: 20px;
+  }
+
+  .searchForm {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
   }
 
   footer {
@@ -83,6 +67,15 @@
     /* align-items: flex-end; */
     display: grid;
     grid-template-rows: repeat(2, 1fr);
+  }
+
+  .navigation {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }
 
   #menu {
