@@ -241,6 +241,11 @@ button,
   opacity: 1;
 }
 
+h1 {
+  font-size: var(--large-font);
+  font-weight: bolder;
+}
+
 h1,
 h2 {
   font-size: 1.25rem;
