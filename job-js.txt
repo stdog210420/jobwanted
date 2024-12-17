@@ -34,7 +34,7 @@ async function getJobs() {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': 'bf693709e5msh4cde3b39db47e80p184a6cjsne43559ba5412',
+            'x-rapidapi-key': 'x-rapidapi-key': 'bf693709e5msh4cde3b39db47e80p184a6cjsne43559ba5412',
             'x-rapidapi-host': 'jsearch.p.rapidapi.com'
         }
     };

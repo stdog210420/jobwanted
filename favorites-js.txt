@@ -1,0 +1,137 @@
+const { VITE_JSEARCH_KEY: jsKey } = import.meta.env;
+
+// 1. loading saved favorites in localStorage
+const favoriteIds = JSON.parse(localStorage.getItem("favorites")) || [];
+const favoritesContainer = document.querySelector(".favoriteContainer");
+
+// 2. check if there is any saved job-id
+if (favoriteIds.length === 0) {
+    favoritesContainer.innerHTML = "<p>You have no favorite jobs yet!</p>";
+} else {
+    // 3. Check if I've already fetched the job data
+    const url = `https://jsearch.p.rapidapi.com/job-details?job_id=${favoriteIds.join(',')}&country=all`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': jsKey,
+            'x-rapidapi-host': 'jsearch.p.rapidapi.com'
+        }
+    };
+
+    fetch(url, options)// API URL
+        .then(response => response.json())
+        .then(data => {
+            // filter the saved jobs
+            const jobs = data.data || [];
+            console.log("Fetched data:", data);
+            if (!Array.isArray(jobs)) {
+                throw new Error("Expected 'jobs' to be an array");
+            }
+            // console.log(favoriteIds);
+            if (favoriteIds.includes(jobs.job_id)) {
+                console.log("This job is in the favorites list.");
+            } else {
+                console.log("This job is not in the favorites list.");
+            }
+
+            const favoriteJobs = jobs.filter(job => favoriteIds.includes(job.job_id));
+            // if saved jobs existed, rendering to the jobsave.html page
+            if (favoriteJobs.length > 0) {
+                favoritesContainer.innerHTML = ""; // clear Loading text
+                favoriteJobs.forEach(job => {
+                    const jobElement = document.createElement("div");
+                    jobElement.classList.add("job-item");
+                    jobElement.innerHTML = `
+                    <div class="employer-logo">
+                        <a href="${job.employer_website || '#'}" target="_blank"><img src="${job.employer_logo || ''}" alt="${job.employer_name || 'Employer Logo'}" loading="lazy" width="60" height="60"></a>
+                        <h1>${job.job_title || 'No job title available.'}</h1>
+                    </div>
+                    <h2>${job.employer_name || 'No employer name available.'}</h2>
+                    <p>Publisher: ${job.job_publisher || "No information available."}</p>
+                    <p>Type: ${job.job_employment_type || "No information available."}</p>
+                    <p>Country: ${job.job_country || "No information available."}</p>
+                    <p><a href="${job.job_apply_link}" target="_blank">Apply Here</a></p>
+                    <p><a href = "${job.job_apply_link}" target = "_blank" >Job Detail</a ></p>`;
+                    const removeButton = document.createElement("button");
+                    removeButton.classList.add("removeBtn");
+                    removeButton.textContent = "Remove";
+                    jobElement.appendChild(removeButton);
+                    favoritesContainer.appendChild(jobElement);
+                    removeButton.addEventListener("click", function (event) {
+                        if (event.target && event.target.classList.contains("removeBtn")) {
+                            const jobIdToRemove = event.target.getAttribute("data-job-id");
+                            removeJobFromFavorites(jobIdToRemove);
+                        }
+                    });
+                });
+            } else {
+                favoritesContainer.innerHTML = "<p>No matching favorite jobs found!</p>";
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching jobs data:", error);
+            favoritesContainer.innerHTML = "<p>Failed to load your favorite jobs. Please try again later.</p>";
+        });
+}
+
+
+function removeJobFromFavorites(jobIdToRemove) {
+    // remove job_id from favoriteIds array 
+    const updatedFavorites = favoriteIds.filter(jobId => jobId !== jobIdToRemove);
+
+    // update localStorage
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+
+    //render the favorite page
+    renderFavoriteJobs(updatedFavorites);
+}
+
+function renderFavoriteJobs(favoriteIds) {
+    favoritesContainer.innerHTML = "";  // 清空現有內容
+
+    // filter favorite id
+    const favoriteJobs = jobs.filter(job => favoriteIds.includes(job.job_id));
+
+    if (favoriteJobs.length > 0) {
+        // 如果有最愛職缺，則渲染
+        favoriteJobs.forEach(job => {
+            const jobElement = document.createElement("div");
+            jobElement.classList.add("job-item");
+            jobElement.innerHTML = `
+                <div class="employer-logo">
+                    <a href="${job.employer_website || '#'}" target="_blank">
+                        <img src="${job.employer_logo || ''}" alt="${job.employer_name || 'Employer Logo'}" loading="lazy" width="60" height="60">
+                    </a>
+                    <h1>${job.job_title || 'No job title available.'}</h1>
+                </div>
+                <h2>${job.employer_name || 'No employer name available.'}</h2>
+                <p>Publisher: ${job.job_publisher || "No information available."}</p>
+                <p>Type: ${job.job_employment_type || "No information available."}</p>
+                <p>Country: ${job.job_country || "No information available."}</p>
+                <p><a href="${job.job_apply_link}" target="_blank">Apply Here</a></p>
+                <p><a href="${job.job_apply_link}" target="_blank">Job Detail</a></p>
+            `;
+
+            // 創建移除按鈕並附加到 jobElement
+            const removeButton = document.createElement("button");
+            removeButton.classList.add("removeBtn");
+            removeButton.textContent = "Remove";
+            removeButton.setAttribute("data-job-id", job.job_id);  // 將 job_id 傳遞給按鈕
+            jobElement.appendChild(removeButton);
+
+            // 加入 jobElement 到 favoritesContainer
+            favoritesContainer.appendChild(jobElement);
+
+            // 監聽移除按鈕的點擊事件
+            removeButton.addEventListener("click", function (event) {
+                const jobIdToRemove = event.target.getAttribute("data-job-id");
+                removeJobFromFavorites(jobIdToRemove);
+            });
+        });
+    } else {
+        // 如果沒有最愛職缺
+        favoritesContainer.innerHTML = "<p>No favorite jobs found!</p>";
+    }
+}
+
+// 渲染頁面時，需要調用 renderFavoriteJobs，傳遞當前的 favoriteIds

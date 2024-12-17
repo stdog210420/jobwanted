@@ -1,29 +1,33 @@
 :root {
+  /* Color */
   --primary-color: #5c5751;
-  --secondary-color: #db998f;
-  --accent1-color: #2b1109;
+  --secondary-color: #03568c;
+  --accent1-color: #252928;
   --accent2-color: #91393e;
-  --nav-hover-background-color: #fff;
-
-  /* change the values below to your chosen font(s) */
-  --heading-font: "Comic Neue", Lato, Helvetica;
-  --paragraph-font: "Open Sans", Helvetica, sans-serif;
+  --white-color: #fff;
+  /* Typography */
+  --font-headline: "Comic Neue", Lato, Helvetica;
+  --font-body: "Open Sans", Helvetica, sans-serif;
+  /* sizes */
+  --font-base: 18px;
+  --small-font: 0.8em;
+  --large-font: 1.2em;
 }
 
 /* Desktop Views ****************************/
 @media screen and (min-width: 1024px) {
   body {
-    font-size: 20px;
+    font-size: var(--font-base);
   }
 
   .headerfix {
-    display: grid;
-    grid-template-columns: 2fr 2fr auto;
+    display: flex;
+    justify-content: space-between;
   }
 
   .logo {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 
   main {

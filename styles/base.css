@@ -27,6 +27,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--primary-color);
+  background-color: #f8f9fc;
 }
 
 img {
@@ -36,14 +37,12 @@ img {
 }
 
 .headerfix {
-  display: flex;
-  justify-content: space-between;
   padding: 0 10px;
 }
 
 .divider {
-  background-color: #f2f5fb;
-  /* box-shadow: inset 0 1px 3px rgba(17, 17, 17, 0.1); */
+  background-color: var(--white-color);
+  box-shadow: inset 0 1px 3px rgba(17, 17, 17, 0.1);
   padding: 10px;
 }
 
@@ -53,8 +52,8 @@ img {
 }
 
 .logo {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   align-items: center;
   padding: 0 10px;
 }
@@ -65,9 +64,34 @@ img {
   height: auto;
 }
 
+.footer-logo img {
+  width: 40%;
+  height: auto;
+}
+
 .logo:hover {
   /*move 10 pixels to the right, and move 10 pixels down.*/
   transform: translate(10px, 10px);
+}
+
+.saveBtn:hover,
+.mapBtn:hover {
+  background-color: var(--secondary-color);
+}
+
+.mapBtn:active,
+.saveBtn:active {
+  background-color: #a0c5ff;
+}
+
+.employer-logo {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.employer-logo h1 {
+  margin-left: 10px;
 }
 
 .search-box {
@@ -88,7 +112,7 @@ input {
   /* Rounds the corners */
   box-shadow: inset 0 1px 3px rgba(17, 17, 17, 0.1);
   /* Adds a subtle inner shadow for a recessed look */
-  font-size: 16px;
+  font-size: var(--font-body);
   /* Sets a readable font size */
   font-family: var(--font-body);
   /* Applies a clean font style */
@@ -114,8 +138,109 @@ button,
   margin: auto;
   display: block;
   border: 0;
+  text-align: center;
   font-size: var(--large-font);
   cursor: pointer;
+}
+
+.saveBtn {
+  width: 70px;
+  height: 50px;
+  background-color: var(--accent2-color);
+  color: white;
+  border-radius: 50%;
+  margin: auto 10px;
+  display: block;
+  border: 0;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  justify-content: center;
+  align-items: right;
+}
+
+.mapBtn,
+.removeBtn {
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 1em;
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.jobs,
+.favoriteContainer {
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: baseline;
+  align-items: center;
+  justify-content: center;
+}
+
+.jobMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background-color: var(--white-color);
+}
+
+/* #ViewMap*/
+.job-bounce-active {
+  animation-name: viewMap;
+  /* animation: viewMap 0.5s ease-in-out; */
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes viewMap {
+  from {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+  }
+
+  to {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+}
+
+/*save button*/
+.saveButton.saved {
+  background-color: var(--secondary-color);
+  color: white;
+  cursor: not-allowed;
+}
+
+.notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease, display 0.5s ease;
+}
+
+.notification.show {
+  display: block;
+  opacity: 1;
 }
 
 h1,
@@ -130,17 +255,9 @@ h1:hover {
   color: var(--accent2-color);
 }
 
-.jobs {
-  padding: 0.5em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: baseline;
-  align-items: center;
-  justify-content: center;
-}
 
 .job-item {
-  width: 500px;
+  max-width: 400px;
   height: 600px;
   margin: 2px;
   display: flex;
@@ -231,6 +348,14 @@ h1:hover {
   border: none;
 }
 
+footer .logo {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  max-width: 30%;
+  height: auto;
+}
+
 /* End job list card */
 
 /* mobile view */
@@ -241,158 +366,39 @@ h1:hover {
     margin: 0 auto;
   }
 
-  .job-icon,
-  .event-icon,
-  .member-icon,
-  .contact-icon {
+  .mapBtn,
+  .saveBtn {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .footer-logo img {
     width: 10%;
+    height: auto;
+
   }
 
   .headerfix,
-  .logo,
-  .job-cards,
   footer,
-  .join-member,
-  .formarea,
-  .contact-form,
-  .event-section,
-  .job-area,
-  .bag-cards {
+  .job-item,
+  .jobs,
+  .footer-logo,
+  .footer-area,
+  .divider,
+  .favoriteContainer {
     display: flex;
     flex-direction: column;
-  }
-
-  .contact-form,
-  .formarea2 {
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .formarea2 {
-    justify-content: center;
-    align-items: center;
-  }
-
-  .infro {
-    margin: 0 20px;
-    padding: 0 20px;
-  }
-
-  .formarea2 iframe {
-    width: 95%;
-    height: auto;
-  }
-
-  .job-list {
-    align-items: center;
-    justify-content: center;
-  }
-
-  .bag-cards {
-    margin: 0;
-    padding: 0;
-    align-items: flex-start;
-    justify-content: center;
-  }
-
-  .bag-cards img {
-    width: 80%;
-    height: auto;
-  }
-
-  .event-area {
-    margin-top: 120px;
-  }
-
-  .formarea,
-  .formarea2 {
-    display: block;
-    margin: 0;
-    padding: 5px;
-  }
-
-  .benefits {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    padding: 0 20px;
-  }
-
-  .formarea2 {
     text-align: center;
-  }
-
-  .form input[type="submit"] {
-    display: block;
-    align-self: center;
-    justify-content: center;
-    margin: 20px auto;
-  }
-
-  .form legend {
-    font-size: 1.5rem;
-  }
-
-  /* Responsive styling for smaller cells */
-  .table th,
-  .table td {
-    align-self: baseline;
-    justify-content: center;
-    text-align: center;
-    text-wrap: wrap;
-    margin: 0 5px;
-    padding: 5px;
-    font-size: 0.9em;
-  }
-
-  .title,
-  .card-msg,
-  .card-msg2 {
-    font-size: 0.5rem;
-    /* 減小字體大小 */
-  }
-
-  .hero-msg {
-    display: block;
-    text-align: center;
-    width: 90%;
-    margin-top: 100px;
-  }
-
-  .footer-area {
     margin: 1rem;
     align-self: center;
     justify-items: center;
-    font-size: 0.5rem;
+
   }
 
-  .join,
-  .join-area,
-  .join-link {
-    display: block;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .join-member {
-    align-items: center;
-  }
-
-  .join-link {
-    max-width: 90%;
-    height: auto;
-  }
-
-  .join-title {
-    padding: 0.5rem;
-    margin: 0;
-  }
 
   /*    main,.hero */
   .navigation a {
-    display: none;
+    display: block;
   }
 
   .navigation {
@@ -401,22 +407,4 @@ h1:hover {
     display: block;
   }
 
-  #menu::before {
-    content: "☰";
-    font-size: 1.5rem;
-    font-weight: bolder;
-  }
-
-  #menu.open::before {
-    content: "❌";
-  }
-
-  #menu.open {
-    display: block;
-  }
-
-  .navigation.open a {
-    display: block;
-    font-size: 1.5rem;
-  }
 }
