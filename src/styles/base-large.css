@@ -21,7 +21,7 @@
   }
 
   .divider {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -30,6 +30,7 @@
   }
 
   .headerfix {
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
   }
@@ -53,6 +54,7 @@
   }
 
   .searchForm {
+    max-width: 100%;
     justify-content: space-around;
     display: flex;
     flex-direction: row;

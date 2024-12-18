@@ -67,8 +67,15 @@ img {
 }
 
 .logo img {
-  width: 100%;
+  margin: 5px;
+  max-width: 100px;
   height: auto;
+}
+
+.footer-logo img {
+  max-width: 50%;
+  height: auto;
+
 }
 
 
@@ -288,7 +295,7 @@ h1:hover {
 .searchForm {
   margin: 0;
   padding-right: 1rem;
-  width: 100%;
+  max-width: 100%;
   font-size: 1.25rem;
   font-weight: bolder;
   align-items: center;
@@ -364,19 +371,6 @@ h1:hover {
   background-color: var(--nav-hover-background-color);
 }
 
-.logo img {
-  margin: 0;
-  max-width: 60%;
-  height: auto;
-}
-
-.footer-logo img {
-  width: 30%;
-  height: auto;
-
-}
-
-
 /* mobile view */
 @media screen and (max-width: 1023px) {
   body {
@@ -399,6 +393,7 @@ h1:hover {
   .footer-area,
   .divider,
   .favoriteContainer {
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
