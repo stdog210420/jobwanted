@@ -1,6 +1,7 @@
-const { VITE_GOOGLE_MAPS_API_KEY: key } = import.meta.env;
-const { VITE_JSEARCH_KEY: jsKey } = import.meta.env;
-
+// const { VITE_GOOGLE_MAPS_API_KEY: key } = import.meta.env;
+let key = "AIzaSyDy7cLklRcBVgQPW9k16qD7A9mGY8G_7c4";
+//const { VITE_JSEARCH_KEY: jsKey } = import.meta.env;
+let jsKey = "bf693709e5msh4cde3b39db47e80p184a6cjsne43559ba5412";
 const search = document.querySelector(".search");
 search.addEventListener("click", () => {
     getJobs();
