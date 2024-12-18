@@ -90,13 +90,13 @@ favoritesContainer.addEventListener("click", function (event) {
 
 // Remove a job from the favorites list
 function removeJobFromFavorites(jobIdToRemove) {
-    // remove job_id from favoriteIds array 
+    // Remove job_id from favoriteIds array 
     const updatedFavorites = favoriteIds.filter(jobId => jobId !== jobIdToRemove);
 
-    // update localStorage
+    // Update localStorage
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
 
-    // update cached jobs in localStorage
+    // Update cached jobs in localStorage
     const cachedJobs = JSON.parse(localStorage.getItem('cachedJobs'));
     const updatedJobs = cachedJobs.filter(job => updatedFavorites.includes(job.job_id));
     localStorage.setItem('cachedJobs', JSON.stringify(updatedJobs));

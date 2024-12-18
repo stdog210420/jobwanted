@@ -51,6 +51,11 @@ async function getJobs() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
+
+        if (result && result.data && result.data.length > 0) {
+            localStorage.setItem('cachedJobs', JSON.stringify(result.data));
+            console.log("Jobs cached in localStorage.");
+        }
         displayJobs(result); // Display jobs function to show results to users
     } catch (error) {
         console.error("Error fetching jobs:", error);
