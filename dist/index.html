@@ -1,82 +1,72 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Wanted</title>
-    <meta name="description" content="Job Wanted" />
-    <meta name="author" content="Phoebe Lin" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap&family=Lato:wght@300&family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" crossorigin src="/assets/index-DDMxXxgR.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CuPzu8vU.css">
-  </head>
 
-  <body>
-    <header class="headerfix divider">
-      <section class="navigation">
-        <div class="logo">
-          <a href="index.html"
-            ><img
-              src="/assets/logo-BK8SqsZE.jpg"
-              alt="Logo image"
-              loading="lazy"
-              width="200"
-              height="200"
-          /></a>
-        </div>
-        <a class="job-link" href="index.html">Home</a>
-      </section>
-      <div class="navigation">
-        <form id="searchForm1" class="search-box">
-          <input
-            type="text"
-            id="searchSkill"
-            placeholder="🔍Skill, title or company..."
-          />
-        </form>
-        <form id="searchForm2" class="search-box">
-          <input
-            type="text"
-            id="searchLocation"
-            placeholder="🚩Country, City, or state..."
-          />
-        </form>
-        <form id="searchForm3" class="search-box">
-          <label for="workFromHome"
-            >Remote
-            <input
-              type="checkbox"
-              id="searchType"
-              name="workFromHome"
-              value="True"
-            />
-          </label>
-        </form>
-        <button class="search" type="submit">Search</button>
-      </div>
-    </header>
-    <main>
-      <section class="jobs"></section>
-      <!-- Modal Structure -->
-      <div id="mapModal" class="modal">
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h2>Map Location</h2>
-          <div id="mapContainer">
-            <!-- Google Maps iframe will be injected here -->
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Wanted</title>
+  <meta name="description" content="Job Wanted" />
+  <meta name="author" content="Phoebe Lin" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/base-large.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap&family=Lato:wght@300&family=Montserrat:wght@300&family=Open+Sans:wght@300&display=swap"
+    rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/main-BoHMCzvR.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/getdates-CM6MPNg0.js">
+</head>
+
+<body>
+  <header class="headerfix divider">
+    <div class="logo">
+      <a href="index.html"><img src="/images/logo.webp" alt="Logo image" loading="lazy" width="200" height="200" /></a>
+    </div>
+    <div class="navigation">
+      <a class="job-link" href="./">Home</a>
+      <a class="job-link" href="./jobsave.html">View Favorites</a>
+    </div>
+    <button id="menu"></button>
+    <div class="searchForm">
+      <form id="searchForm1" class="search-box">
+        <input type="text" id="searchSkill" placeholder="🔍Skill, title or company..." />
+      </form>
+      <form id="searchForm2" class="search-box">
+        <input type="text" id="searchLocation" placeholder="🚩Country, City, or state..." />
+      </form>
+      <form id="searchForm3" class="search-box">
+        <label for="workFromHome">Remote
+          <input type="checkbox" id="searchType" name="workFromHome" value="True" />
+        </label>
+      </form>
+      <button class="search" type="submit">Search</button>
+    </div>
+  </header>
+  <main>
+    <section class="jobs"></section>
+    <!-- Modal Structure -->
+    <div id="mapModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Map Location</h2>
+        <div id="mapContainer">
+          <!-- Google Maps iframe will be injected here -->
         </div>
       </div>
-    </main>
-    <footer class="divider">
-      <div class="logo">
-        <a href="index.html">Job Wanted</a>
-      </div>
-    </footer>
-  </body>
+    </div>
+    <div id="notification" class="notification"></div>
+  </main>
+  <footer class="divider">
+    <div class="footer-logo">
+      <a href="./index.html"><img src="/images/logo.webp" alt="Logo image" loading="lazy" width="200"
+          height="200" /></a>
+    </div>
+    <div class="footer-area">
+      <p id="footer-name">Job Wanted<span>&copy;</span><span id="year"> </span> </p>
+      <p id="lastModified">Last Modified</p>
+    </div>
+  </footer>
+</body>
+
 </html>

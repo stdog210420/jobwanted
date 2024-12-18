@@ -16,6 +16,7 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-import": "^2.31.0",
