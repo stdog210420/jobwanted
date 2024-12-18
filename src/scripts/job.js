@@ -20,9 +20,13 @@ async function getJobs() {
 
     const skill = skillInput.value.trim();
     const country = countryInput.value.trim();
-    let type = typeInput.value.trim();
-    if (type === "True") {
-        type = true;
+    let type = typeInput.checked; // directly get the check status
+    if (type) {
+        type = true; // checked
+        console.log("Remote selected");
+    } else {
+        type = false; // not check
+        console.log("Not remote");
     }
 
 
