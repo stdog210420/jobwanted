@@ -21,7 +21,7 @@ async function getJobs() {
     const skill = skillInput.value.trim();
     const country = countryInput.value.trim();
     let type = typeInput.value.trim();
-    if (type = "True") {
+    if (type === "True") {
         type = true;
     }
 
