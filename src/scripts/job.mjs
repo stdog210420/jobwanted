@@ -1,4 +1,5 @@
 const { VITE_GOOGLE_MAPS_API_KEY: key } = import.meta.env;
+const { VITE_JSEARCH_KEY: jsKey } = import.meta.env;
 
 const search = document.querySelector(".search");
 search.addEventListener("click", () => {
@@ -34,7 +35,7 @@ async function getJobs() {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': 'bf693709e5msh4cde3b39db47e80p184a6cjsne43559ba5412',
+            'x-rapidapi-key': jsKey,
             'x-rapidapi-host': 'jsearch.p.rapidapi.com'
         }
     };
