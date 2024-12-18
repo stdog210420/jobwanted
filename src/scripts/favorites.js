@@ -1,5 +1,6 @@
-const { VITE_JSEARCH_KEY: jsKey } = import.meta.env;
+// const { VITE_JSEARCH_KEY: jsKey } = import.meta.env;
 let jobs = [];  // global variables
+let key = "AIzaSyDy7cLklRcBVgQPW9k16qD7A9mGY8G_7c4";
 // 1. loading saved favorites in localStorage
 const favoriteIds = JSON.parse(localStorage.getItem("favorites")) || [];
 const favoritesContainer = document.querySelector(".favoriteContainer");
