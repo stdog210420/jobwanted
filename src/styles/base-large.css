@@ -38,7 +38,7 @@
   .jobs,
   .favoriteContainer {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .jobMap {
